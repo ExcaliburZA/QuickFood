@@ -25,7 +25,7 @@ public class Main {
 			if(AssignDriver(theCustomer.restaurant.location)) {
 				GenInvoice();
 			} else
-				GenInvalidInvoice();
+				GenInvoiceIncompleteOrder();
 		} catch (Exception e) {
 			System.out.println("An error occurred processing your order!\nError: "+e.getMessage());
 		}
@@ -199,7 +199,7 @@ public class Main {
 	}
 	
 	//method that will generate an alternative invoice informing the user that their order could not be completed
-	public static void GenInvalidInvoice() {
+	public static void GenInvoiceIncompleteOrder() {
 		try {
 			//using a formatter to create an invoice informing the user that their order cannot be completed
 			Formatter f = new Formatter(INVOICE_PATH);
