@@ -14,6 +14,7 @@ public class Main {
 			SENTINEL_VAL = "x", 
 			INVOICE_PATH = "invoice.txt";
 	
+	//customer object declaration which will be used to track the personal information of the customer
 	public static Customer theCustomer;
 
 	public static void main(String[] args) {
@@ -38,7 +39,7 @@ public class Main {
 			theCustomer = new Customer(new ArrayList<FoodItem>(), new Restaurant());
 			theCustomer.itemOrder = new ArrayList<>();
 			
-			//variable declarations
+			//variable declarations for our food item object that will be used to track information about each unique item 
 			FoodItem item;
 			
 			Scanner inScan = new Scanner(System.in);
@@ -85,6 +86,7 @@ public class Main {
 				currItemName = inScan.nextLine();
 				System.out.println();
 				
+				//continuously testing to see if the sentinel value has been entered in order to terminate the while loop at the appropriate time
 				if(currItemName.equals(SENTINEL_VAL))
 					break;
 				
@@ -101,6 +103,7 @@ public class Main {
 				++itemsCount;
 			}
 			
+			//prompting the user to enter any special preparation instructions they might have
 			System.out.print("Enter the special prep instructions: ");
 			theCustomer.instructions = inScan.nextLine();
 			
@@ -155,6 +158,7 @@ public class Main {
 		//variable declarations
 		String[] driverInfo;
 		
+		//line that contains various pieces of information relating to the delivery driver
 		String driverInfoLine = "";
 		
 		boolean driverFound = false;
@@ -163,6 +167,8 @@ public class Main {
 		driverName = "";
 		
 		try {
+			
+			//initialising output file using a constant file name as the path
 			File driverFile = new File(DRIVERS_PATH);
 			
 			Scanner inScan = new Scanner(driverFile);
@@ -195,6 +201,7 @@ public class Main {
 	//method that will generate an alternative invoice informing the user that their order could not be completed
 	public static void GenInvalidInvoice() {
 		try {
+			//using a formatter to create an invoice informing the user that their order cannot be completed
 			Formatter f = new Formatter(INVOICE_PATH);
 			
 			f.format("%s", "Sorry! Our drivers are too far away from you to be able to deliver to your location");		
